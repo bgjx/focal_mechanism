@@ -1,0 +1,12 @@
+#!/bin/csh -f
+if (-f a.junk) \rm a.junk
+../../bin/dsretc << EOT > a.junk
+/* next line is comment describing run
+Sakhalin Island: 1990 NEIC/QED solution
+n       Dip, Strike and Rake?..[Y]
+y       P and T trend and plunge
+269.00    13.00   171.00    30.00
+n       Run some more?...[Y]
+EOT
+mv dsretc.lst dsretc_qed.lst
+ 

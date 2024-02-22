@@ -1,0 +1,26 @@
+#!/bin/csh -f
+if (-f a.junk) \rm a.junk
+../../bin/ratplt << EOT > a.junk
+/*  Next entry is comment line
+Ratplt for 1990 NEIC/QED solution
+/*  Next entry is input polarity/ratio plot file name
+focmec_8sta.inp
+y	Desired file?..[Y]
+0.16	maximum allowed log10 of ratio..[0.6]
+        lower-limit cutoff for P radiation factor..[0.1]
+        lower-limit cutoff for S radiation factor..[0.1]
+58.66  313.80   12.91  dip, strike, rake 1990 NEIC/QED
+n	Upper hemisphere projection?..[N]
+0.3    Size of ratio scaling factor..[0.2]
+        linewidth for circle outline..[2]
+n       Add a title?
+y       Add a plot label?
+-2.0 2.2 X and Y positions for label
+b)
+n       Change from defaults for penwidth, height and angle?
+y       cursor in lower left-hand corner
+n	Add a plot label?
+EOT
+mv ratplt.lst RatQED.lst
+mv temp.sgf RatQED.sgf
+../../bin/sgftopdf RatQED

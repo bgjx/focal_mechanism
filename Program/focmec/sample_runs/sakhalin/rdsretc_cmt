@@ -1,0 +1,13 @@
+#!/bin/csh -f
+if (-f a.junk) \rm a.junk
+../../bin/dsretc << EOT > a.junk
+/* next line is comment describing run
+Sakhalin Island: final CMT moment-tensor input
+n       Dip, Strike and Rake?..[Y]
+n       P and T axes trend and plunge?..[Y]
+-3.568    -0.8660      4.434     -6.122     -2.665      2.470
+/* Previous line is MRR MTT MPP MRT MRP MTP (free format)
+n       Run some more?...[Y]
+EOT
+mv dsretc.lst dsretc_cmt.lst
+ 

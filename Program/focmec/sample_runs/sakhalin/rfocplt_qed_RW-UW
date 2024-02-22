@@ -1,0 +1,61 @@
+#!/bin/csh -f
+if (-f a.junk) \rm a.junk
+../../bin/focplt << EOT > a.junk
+/* To see output on screen, take out the > a.junk part of previous line
+/*    and delete second line in this file
+/* Printed output is in a file focplt.lst -- renamed in last line
+n	Upper hemisphere projection?..[N]
+y	Plot polaritt data?
+/*  Next entry is input polarity plot file name
+focmec_qed.inp
+y	Desired file?..[Y]
+y	Plot impulsive P polarities?..[Y]
+0.1	Enter size for impulsive P polarities [0.25]
+1	linewidth for impulsive P polarities..[1]
+n	Plot emergent P polarities?..[Y]
+	linewidth for circle outline..[2]
+n	Add a title?..[Y]
+n	Add time & file name? ..[y]
+n	Add more data to plot?
+y       Plot focal mechanism solutions?..[Y]
+y       Print/display solution summaries?..[N]
+n       Plot P, T and B axes?  [Y]
+y       P nodal planes..[Y]
+y       Dashed Line?..[N]
+0.1	length of dahs [0.1]
+0.1	space between dashes [0.1]
+1	Linewidth for solutions ... [1]
+y	Same plot as data?
+y       Input solutions from a file?..[Y]
+/* file name with solutions
+focmec_qedRW.out
+y	Correct file?
+n	Plot time & file name?..[Y]
+y	More solutions?
+n       Plot P, T and B axes?  [Y]
+y       P nodal planes..[Y]
+n       Dashed Line?..[N]
+1	Linewidth for solutions ... [1]
+y       Input solutions from a file?..[Y]
+/* file name with solutions
+focmec_qedUW.out
+y	Correct file?
+y	More solutions?
+n       Plot P, T and B axes?  [Y]
+y       P nodal planes..[Y]
+n       Dashed Line?..[N]
+2	Linewidth for solutions ... [1]
+n       Input solutions from a file?..[Y]
+59.08   313.87    13.07  1990 NEIC/QED solutionn from abstract
+	More solutions? [N]
+y	Add a plot label?
+-2.0 2.2 X and Y positions for label
+a)
+n       Change from defaults for penwidth, height and angle?
+y       cursor in lower left-hand corner
+n	Add a plot label?
+EOT
+if ($status != 0) exit
+mv focplt.lst focplt_qedRW-UW.lst
+mv temp.sgf focplt_qedRW-UW.sgf
+../../bin/sgftopdf focplt_qedRW-UW

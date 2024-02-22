@@ -1,0 +1,23 @@
+#!/bin/csh -f
+# This program is put in as an example about how one can write a SAC Graphics
+# Format file (*.sgf).  I includes the possibility of adding a label, which
+# can take advantage of the symbol routine features (see ../doc/graphics.html).  # The .sgf file produced is converted to a .pdf file (using gs), which is far 
+# more portable than .sgf files.
+# Screen output is ported to file vwbeetle.term.
+# Run program without scrpt
+# and look at the source code in ./src/vwbeetle.f to understand syntax
+#
+../bin/vwbeetle << EOT > vwbeetle.term
+/* Blank lines mean one is taking the default: here for linewidth and style
+
+
+y	Add a label
+4 1.5	X and Y position
+/* Next line is label
+BANG!
+n	taking defaults for size, angle
+y	Taking first option for which corner is reference point
+n	No more labels
+EOT
+mv temp.sgf vwbeetle.sgf
+../bin/sgftopdf vwbeetle

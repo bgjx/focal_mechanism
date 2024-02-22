@@ -1,0 +1,28 @@
+#!/bin/csh -f
+if (-f a.junk) \rm a.junk
+../../bin/focmec << EOT > a.junk
+/*  FOCMEC .out file [focmec.out]
+focmec_8staRW-cmtfixed.out
+Sakhalin:  8 BB data  RW 0.2 ratio error 0.2:  fixed CMT
+/*  Previous line comment (up to 80 char) Next line input file [focmec.iknp]
+focmec_8sta.inp
+	correct file  [y]
+y	relative weighting..[y]
+y	Total polarity option
+0.2	allowed polarity erors..[0]
+0.2	maximum allowed log10 of ratio..[0.6]
+2	numer of allowed ratio errors
+        lower-limit cutoff for P radiation factor..[0.1]
+        lower-limit cutoff for S radiation factor..[0.1]
+	exit after this many acceptable solutions...[100]
+2.29244E+02    B trend min
+5.00000E+00    B trend incr
+2.29244E+02    B trend max
+2.50855E+01    B plunge min
+5.00000E+00    B plunge incr
+2.50855E+01    B plune max
+1.05302E+02    Angle min
+5.00000E+00    Angle incr
+1.05302E+02    Angle max
+EOT
+mv focmec.lst focmec_8staRW-cmtfixed.lst

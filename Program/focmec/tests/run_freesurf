@@ -1,0 +1,23 @@
+#!/bin/csh -f
+#  Program freesurf calculates the amplitudes for P on Z,
+#  P on R, SV on Z, and SV on R for input emergence or apparent
+#  angles.  Such calculations are used in program Fileprep, that
+#  is used when there are amplitude ratios involving SV.  This run
+#  run is for the first two stations from file fmecprep_8sta.inp
+#  for the Sakhalin event using surface velocities from iasp91.tvel.
+# 
+../bin/freesurf << EOT > a.junk
+/* Next line is comment
+Sakhalin event stations
+0.6	v_s/v_p
+BLA	Station
+14.204	P emergence
+16.393	S emergence
+Y	more stations
+CCM
+15.394
+17.541
+n
+EOT
+if ($status != 0) exit
+mv freesurf.lst freesurf_sakhalin.lst

@@ -1,0 +1,26 @@
+#!/bin/csh -f
+if (-f a.junk) \rm a.junk
+../../bin/ratplt << EOT > a.junk
+/*  Next entry is comment line
+Ratplt for the 8sta-best solution
+/*  Next entry is input polarity/ratio plot file name
+focmec_8sta.inp
+y	Desired file?..[Y]
+0.16	maximum allowed log10 of ratio..[0.6]
+        lower-limit cutoff for P radiation factor..[0.1]
+        lower-limit cutoff for S radiation factor..[0.1]
+76.43   59.08  -64.23  dip, strike, rake best 8-BB solution
+n	Upper hemisphere projection?..[N]
+0.3    Size for ratio scaling factor..[0.2]
+        linewidth for circle outline..[2]
+n       Add a title?
+y       Add a plot label?
+-2.0 2.2 X and Y positions for label
+a)
+n       Change from defaults for penwidth, height and angle?
+y       cursor in lower left-hand corner
+n	Add a plot label?
+EOT
+mv ratplt.lst Ratplt_8sta-best.lst
+mv temp.sgf Ratplt_8sta-best.sgf
+../../bin/sgftopdf Ratplt_8sta-best

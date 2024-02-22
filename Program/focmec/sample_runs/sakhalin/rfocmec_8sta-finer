@@ -1,0 +1,29 @@
+#!/bin/csh -f
+if (-f a.junk) \rm a.junk
+../../bin/focmec << EOT > a.junk
+/*  FOCMEC .out file [focmec.out]
+focmec_8sta-finer.out		Output file name [focmec.out]
+Sakhalin:  8 BB  0.2 pol errors 1 rat err:  0.16 cut-off finer
+/*  Previous line comment (up to 80 char) Next line input file [focmec.iknp]
+focmec_8sta.inp
+	correct file  [y]
+y	relative weighting..[y]
+y	Total polarity option
+0	allowed polarity erors..[0]
+0.13  maximum allowed log10 of ratio..[0.6]
+0	numer of allowed ratio errors
+        lower-limit cutoff for P radiation factor..[0.1]
+        lower-limit cutoff for S radiation factor..[0.1]
+500	exit after this many acceptable solutions...[100]
+	minimum B trend  [0]
+1	B increment  [5]
+359	maximum B trend  [355]
+	min B plunge..[0]
+1	increment  [5]
+	maximum..[90]
+	minimum Angle..[0]
+1	increment  [5]
+179	maximum  [175]
+EOT
+mv focmec.lst focmec_8sta-finer.lst
+tail focmec_8sta-finer.lst

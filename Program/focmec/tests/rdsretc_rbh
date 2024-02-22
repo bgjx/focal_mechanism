@@ -1,0 +1,12 @@
+#!/bin/csh -f
+if (-f a.junk) \rm a.junk
+../bin/dsretc << EOT > a.junk
+/* next line is comment describing run
+Consistency for representations in Herrmann (1975) example
+n       Dip, Strike and Rake?..[Y]
+y       P and T axes trend and plunge?..[Y]
+75.90     6.60   192.70    75.60    P trend plunge; T trend plunge
+n       Run some more?...[Y]
+EOT
+mv dsretc.lst dsretc_rbh.lst
+ 

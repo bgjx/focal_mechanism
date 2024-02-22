@@ -1,0 +1,29 @@
+#!/bin/csh -f
+if (-f a.junk) \rm a.junk
+../../bin/focmec << EOT > a.junk
+/*  FOCMEC .out file [focmec.out]
+focmec_8staRW-qedfixed.out		Output file name [focmec.out]
+Sakhalin: 8 BB stations data  QED sol. fixed
+/*  Previous line comment (up to 80 char) Next line input file [focmec.iknp]
+focmec_8sta.inp
+	correct file  [y]
+n	Use emergent arrivals?..[y]
+y	relative weighting..[y]
+y	Total polarity option..[n]
+20.	allowed polarity erors..[0]
+0.9	maximum allowed log10 of ratio..[0.6]
+10	numer of allowed ratio errors
+        lower-limit cutoff for P radiation factor..[0.1]
+        lower-limit cutoff for S radiation factor..[0.1]
+	exit after this many acceptable solutions...[100]
+1.956E+01    B trend min
+5.00000E+00    B trend incr
+1.956E+01    B trend max
+5.668E+01    B plunge min
+5.00000E+00    B plunge incr
+5.668+01    B plune max
+2.068E+01    Angle min
+5.00000E+00    Angle incr
+2.068E+01    Angle max
+EOT
+mv focmec.lst focmec_8staRW-qedfixed.lst

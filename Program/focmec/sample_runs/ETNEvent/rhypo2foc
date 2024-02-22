@@ -1,0 +1,7 @@
+#!/bin/csh -f
+../../bin/hypo2foc << EOT > /dev/null
+/* Input hypoellipse archive filespec
+8703270729.arc
+/* Comment for first line in output file
+Chapman et al. 1997 Event 12: 8703270729305.  Emergent coded
+EOT

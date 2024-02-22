@@ -1,0 +1,32 @@
+#!/bin/csh -f
+if (-f a.junk) \rm a.junk
+../../bin/focmec << EOT > a.junk
+/*  FOCMEC .out file [focmec.out]
+focmec_all.out		Output file name [focmec.out]
+Sakhalin:  8 BB  + 198 NEIC P 0.2 rat thresh 20 P, 0.2 SH, 0.2 SV
+/*  Previous line comment (up to 80 char) Next line input file [focmec.iknp]
+focmec_all.inp
+	correct file  [y]
+n	use emergent arrivals? ..[y]
+	relative weighting..[y]
+	Total polarity option [N]
+20.	total P ..[0]
+0.2   total SH
+0.2   total SV
+0.2	maximum allowed log10 of ratio..[0.6]
+	numer of allowed ratio errors
+        lower-limit cutoff for P radiation factor..[0.1]
+        lower-limit cutoff for S radiation factor..[0.1]
+	exit after this many acceptable solutions...[100]
+	minimum B trend  [0]
+	B increment  [5]
+	maximum B trend  [355]
+	min B plunge..[0]
+	increment  [5]
+	maximum..[90]
+	minimum Angle..[0]
+	increment  [5]
+	maximum  [175]
+EOT
+mv focmec.lst focmec_all.lst
+tail focmec_all.lst

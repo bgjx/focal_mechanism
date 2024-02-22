@@ -1,0 +1,8 @@
+#!/bin/csh -f
+# Runs symdemo that shows capabilities of symbol subroutine.
+# Output is a .sgf file.  Runs sgf2x to display output (requires gs).
+# If successful, runs sgf2pdf producing  symdemo.pdf.  A copy of 
+#   symdemo.pdf is in ../doc, along with symbol.html that explains it.
+#
+../bin/symdemo
+../bin/sgftopdf symdemo

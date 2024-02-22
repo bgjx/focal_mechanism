@@ -1,0 +1,25 @@
+#!/bin/csh -f
+if (-f a.junk) \rm a.junk
+../../bin/focmec << EOT > a.junk
+/* output file with summary of solutions
+focmec_qedRWne.out
+Sakhalin: NEIC/QED 190 stations 6.4 errors with relative weighting
+/*  Previous line is a comment (up to 80 char).  Next line is input filespec
+focmec_qed.inp
+	correct file  [y]
+n	Use emergent arrivals?..[y]
+y	relative weighting..[t]
+5.77 allowed (weighted) polarity erors..[0]
+500	exit after this many acceptable solutions...[100]
+	minimum B trend  [0]
+	B increment  [5]
+	maximum B trend  [355]
+	min B plunge..[0]
+	increment  [5]
+	maximum..[90]
+	minimum Angle..[0]
+	increment  [5]
+	maximum  [175]
+EOT
+mv focmec.lst focmec_qedRWne.lst
+tail focmec_qedRWne.lst

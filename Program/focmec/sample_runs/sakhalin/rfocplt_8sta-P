@@ -1,0 +1,58 @@
+#!/bin/csh -f
+if (-f a.junk) \rm a.junk
+../../bin/focplt << EOT > a.junk
+/* To see output on screen, take out the > a.junk
+/*    and delete second line in this file
+/* Printed output is in a file focplt.lst
+n	Upper hemisphere projection?..[N]
+y	Plot polaritiy data?
+/*  Next entry is input polarity plot file name
+focmec_8sta.inp
+y	Desired file?..[Y]
+y	Plot impulsive P polarities?..[Y]
+	Enter size for impulsive P polarities [0.25]
+	linewidth for impulsive P polarities..[1]
+n	Plot impulsive SH polarities?..[Y]
+n	Plot impulsive SV polarities?..[Y]]
+	linewidth for circle outline..[2]
+n	Add a title?..[Y]
+n	Add time & file name? ..[y]
+n	Add more data to plot?..[Y]
+y       Plot focal mechanism solutions?..[Y]
+y       Print/display solution summaries?..[N]
+n       Plot P, T and B axes?  [Y]
+y       P nodal planes..[Y]
+n       Dashed Line?..[N]
+1	Linewidth for solutions ... [1]
+y     same plot as data?
+n   Input solutions from a file?..[Y]]
+76.43   59.08  -64.23  best eight-station solution
+y	More solutions?
+n       Plot P, T and B axes?  [Y]
+y       P nodal planes..[Y]
+y       Dashed Line?..[N]
+0.15	length of dash [0.1]
+0.02	space between dashes [0.1]
+1	Linewidth for solutions ... [1]
+n       Input solutions from a file?..[Y]
+77.05   54.08  -59.13	Best one ratio error
+y	More solutions?
+n       Plot P, T and B axes?  [Y]
+y       P nodal planes..[Y]
+y       Dashed Line?..[N]
+0.02	length of dash [0.1]
+0.02	space between dashes [0.1]
+1	Linewidth for solutions ... [1]
+n       Input solutions from a file?..[Y]
+79.05   62.39  -65.53	Best finer res zero error
+n	More solutions?
+y	Add a plot label?
+-2.0 2.2       X and Y positions for label
+b)
+n       Change from defaults for penwidth, height and angle?
+y       cursor in lower left-hand corner
+n	Add another plot label?
+EOT
+mv focplt.lst plot_8sta-P.lst
+mv temp.sgf plot_8sta-P.sgf
+../../bin/sgftopdf plot_8sta-P

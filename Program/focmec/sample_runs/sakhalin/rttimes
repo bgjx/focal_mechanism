@@ -1,0 +1,22 @@
+#!/bin/csh -f
+#  See ../../tests/run_ttimes for a more general sample run
+
+../../bin/ttimes  << EOT1 > a.junk
+n
+../../lib/nocrust
+S
+
+n
+611.
+86.2757    BLA
+81.3335    CCM
+60.8172    COR
+84.2103    HRV
+52.4736    KEV
+54.5793    KIP
+70.9230    PAS
+86.5080    TOL
+-10.
+-10.
+EOT1
+mv ttimes.lst ttimes_SKS.lst

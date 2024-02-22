@@ -1,0 +1,10 @@
+#!/bin/csh -f
+if ( -f a.junk) \rm a.junk
+ratio_prep << EOT > a.junk
+./stations.loc
+ratio_prep_8sta.inp
+../../lib/nocrust
+focmec_prep_8sta.inp
+Sakhalin: 12 May 1990  ak135 with no crust
+EOT
+mv ratio_prep.lst ratio_prep_8sta.lst

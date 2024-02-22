@@ -1,0 +1,8 @@
+#!/bin/csh -f
+if ( -f a.junk) \rm a.junk
+../../bin/focmec_prep << EOT > a.junk
+focmec_prep_8sta.inp
+sakhalin_8sta.dat
+focmec_8sta.inp
+EOT
+mv focmec_prep.lst focmec_prep_8sta.lst

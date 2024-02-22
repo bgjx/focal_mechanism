@@ -1,0 +1,41 @@
+#!/bin/csh -f
+if (-f a.junk) \rm a.junk
+../../bin/focplt << EOT > a.junk
+n	Upper hemisphere projection?..[N]
+n	Plot polarities and/or ratio data?
+y       Plot focal mechanism solutions?..[Y]
+n       Print/display solution summaries?..[N]
+n       Plot P, T and B axes?  [Y]
+y       P nodal planes..[Y]
+n       Dashed Line?..[N]
+1	Linewidth for solutions ... [1]!!
+2	linewidth for circle outline..[2]
+n	Add a title?..[Y]
+y       Input solutions from a file?..[Y]
+/* Filespec for file with solutions
+focmec_UW-4.out
+y       Correct file?..[Y]
+n	Include time & file name?..[Y]
+y	Add more solutions?
+n       Plot P, T and B axes?  [Y]
+y       P nodal planes..[Y]
+y       Dashed Line?..[N]
+0.05	length of dahs [0.1]
+0.02	space between dashes [0.1]
+1	Linewidth for solutions ... [1]
+y       Input solutions from a file?..[Y]
+/* Filespec for file with solutions
+focmec_RW-1.75.out
+y       Correct file?..[Y]
+n	More solutions?
+y	Add a plot label?
+-2.0 2.2       X and Y positions for label
+a)
+n       Change from defaults for penwidth, height and angle?
+y       cursor in lower left-hand corner
+n	Add a plot label?
+EOT
+if ($status != 0) exit
+mv focplt.lst focplt_etn-solutions.lst
+mv temp.sgf etn-solutions.sgf
+../../bin/sgftopdf etn-solutions

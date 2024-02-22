@@ -1,0 +1,63 @@
+#!/bin/csh -f
+# This is a test of the program ttimes that produces traveltimes and
+#  takeoff angles for hypocenter-station geometries in either ak135, ak135
+#  with no crust, or iasp91.
+# The output is four files: ttimes.term (terminal output if run without
+#  the script) plus ttimes_ak135.lst, ttimes_nocrust.lst, and ttimes_iasp91.lst.
+#  Copies of these filoes are in ../doc/tests-doc/.
+# The same commands are used in program focmec_prep in this pckage
+#
+if ( -f ak135.term) \rm ttimes.term
+../bin/ttimes << EOT1 > ttimes.term
+y                  Print blurb?  Next line is model path
+../lib/ak135
+all        esired branches
+          terminate phase choices
+n
+611.  depth
+78.   distance in degrees
+-10.  no more at this depth
+100.  new depth
+50.  distance
+150.
+-10.  no more distances
+-10.  no more depths
+EOT1
+if ($status != 0) exit
+mv ttimes.lst ttimes_ak135.lst
+../bin/ttimes << EOT2 > ttimes.term
+n  Print blurb?
+../lib/nocrust
+all
+
+n
+611.
+78.
+-10.
+100.
+50.
+150.
+-10.
+-10.
+EOT2
+if ($status != 0) exit
+mv ttimes.lst ttimes_nocrust.lst
+../bin/ttimes << EOT3 >> ttimes.term
+n
+../lib/iasp91
+all
+
+n
+611.
+78.
+-10.
+100.
+50.
+150.
+-10.
+-10.
+EOT3
+if ($status != 0) exit
+cat ttimes.lst  > ttimes_iasp91.lst
+rm ttimes.lst
+cat run_ttimes >> ttimes.term

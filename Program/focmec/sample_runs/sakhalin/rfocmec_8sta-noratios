@@ -1,0 +1,24 @@
+#!/bin/csh -f
+if (-f a.junk) \rm a.junk
+../../bin/focmec << EOT > a.junk
+/*  FOCMEC .out file [focmec.out]
+focmec_8sta-noratios.out		Output file name [focmec.out]
+Sakhalin:  8 BB stations no ratios, 0 polarity errors: ak135 with no crust
+/*  Previous line comment (up to 80 char) Next line input file [focmec.iknp]
+focmec_8sta-noratios.inp
+	correct file  [y]
+n	relative weighting..[y]
+y	Total polarity option
+0	allowed polarity erors..[0]
+500	exit after this many acceptable solutions...[100]
+	minimum B trend  [0]
+	B increment  [5]
+	maximum B trend  [355]
+	min B plunge..[0]
+	increment  [5]
+	maximum..[90]
+	minimum Angle..[0]
+	increment  [5]
+	maximum  [175]
+EOT
+mv focmec.lst focmec_8sta-noratios.lst
